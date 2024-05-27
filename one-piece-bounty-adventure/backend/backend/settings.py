@@ -37,6 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'djongo',
+    'game',
+
 ]
 
 MIDDLEWARE = [
@@ -75,8 +78,14 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'djongo',
+        'NAME': 'ydatabase',
+        'HOST': 'localhost',
+        'PORT': 27017,
+        'AUTH_SOURCE': 'admin',
+        'USER': 'your_username',
+        'PASSWORD': 'your_password',
+        'AUTH_MECHANISM': 'SCRAM-SHA-256',
     }
 }
 
