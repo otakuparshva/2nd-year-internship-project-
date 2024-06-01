@@ -3,9 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>django project</title>
+    <title>Pirate's Home Game</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.0.2/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
-<body>
-    <h1> hi i am luffy</h1>
+<body class="flex flex-col min-h-screen">
+    <header class="flex justify-between items-center p-4 bg-black text-white">
+        <div class="flex items-center">
+            <img src="Ellipse 1.png" alt="Logo" class="h-12 w-12 rounded-full mr-2">
+            <h1 class="text-4xl font-bold">Pirate</h1>
+        </div>
+        <nav class="flex space-x-4">
+            <a href="#" class="px-3 py-2 rounded-md hover:bg-gray-700">Home</a>
+            <a href="#" class="px-3 py-2 rounded-md hover:bg-gray-700">Game</a>
+            <a href="#" class="px-3 py-2 rounded-md hover:bg-gray-700">Tutorial</a>
+            <a href="#" class="px-3 py-2 rounded-md hover:bg-gray-700">About Us</a>
+            <a href="#" class="px-3 py-2 rounded-md hover:bg-gray-700 text-yellow-500">Login / Register</a>
+        </nav>
+    </header>
+    <main class="flex flex-col items-center justify-center flex-grow bg-cover bg-center relative">
+        <div class="text-center mb-8">
+            <h2 class="text-5xl font-bold mb-4 text-black">One Piece</h2>
+            <button id="play-button" class="px-6 py-3 bg-yellow-500 text-black font-bold rounded-md hover:bg-yellow-600">Play Now</button>
+        </div>
+        <img src="Frame 1.png" alt="Luffy" class="h-96 absolute right-0 bottom-0 mr-8 mb-8">
+    </main>
 </body>
 </html>
