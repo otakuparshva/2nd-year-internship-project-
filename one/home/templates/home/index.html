@@ -7,27 +7,28 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.0.2/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="script.js"></script>
 </head>
 <body class="flex flex-col min-h-screen">
     <header class="flex justify-between items-center p-4 bg-black text-white">
         <div class="flex items-center">
-            <img src="Ellipse 1.png" alt="Logo" class="h-12 w-12 rounded-full mr-2">
+            <img src="Ellipse 1.png" alt="Logo" class="h-12 w-12 rounded-full mr-2 animate-spin-slow">
             <h1 class="text-4xl font-bold">Pirate</h1>
         </div>
         <nav class="flex space-x-4">
-            <a href="#" class="px-3 py-2 rounded-md hover:bg-gray-700">Home</a>
-            <a href="#" class="px-3 py-2 rounded-md hover:bg-gray-700">Game</a>
-            <a href="#" class="px-3 py-2 rounded-md hover:bg-gray-700">Tutorial</a>
-            <a href="#" class="px-3 py-2 rounded-md hover:bg-gray-700">About Us</a>
-            <a href="#" class="px-3 py-2 rounded-md hover:bg-gray-700 text-yellow-500">Login / Register</a>
+            <a href="#" class="px-3 py-2 rounded-md hover:bg-gray-700 transition duration-300 ease-in-out transform hover:-translate-y-1">Home</a>
+            <a href="#" class="px-3 py-2 rounded-md hover:bg-gray-700 transition duration-300 ease-in-out transform hover:-translate-y-1">Game</a>
+            <a href="#" class="px-3 py-2 rounded-md hover:bg-gray-700 transition duration-300 ease-in-out transform hover:-translate-y-1">Tutorial</a>
+            <a href="#" class="px-3 py-2 rounded-md hover:bg-gray-700 transition duration-300 ease-in-out transform hover:-translate-y-1">About Us</a>
+            <a href="#" class="px-3 py-2 rounded-md hover:bg-gray-700 text-yellow-500 transition duration-300 ease-in-out transform hover:-translate-y-1">Login / Register</a>
         </nav>
     </header>
     <main class="flex flex-col items-center justify-center flex-grow bg-cover bg-center relative">
-        <div class="text-center mb-8">
+        <div class="text-center mb-8 animate-fadeIn">
             <h2 class="text-5xl font-bold mb-4 text-black">One Piece</h2>
-            <button id="play-button" class="px-6 py-3 bg-yellow-500 text-black font-bold rounded-md hover:bg-yellow-600">Play Now</button>
+            <button id="play-button" class="px-6 py-3 bg-yellow-500 text-black font-bold rounded-md hover:bg-yellow-600 animate-bounce">Play Now</button>
         </div>
-        <img src="Frame 1.png" alt="Luffy" class="h-96 absolute right-0 bottom-0 mr-8 mb-8">
+        <img src="Frame 1.png" alt="Luffy" class="h-96 absolute right-0 bottom-0 mr-8 mb-8 animate-slideInRight">
     </main>
 </body>
 </html>

@@ -26,6 +26,7 @@ main {
     justify-content: center;
     align-items: center;
     position: relative;
+    overflow: hidden; 
 }
 
 #play-button {
@@ -34,10 +35,60 @@ main {
     padding: 10px 20px;
     border-radius: 5px;
     font-size: 1.5em;
+    animation: bounce 2s infinite;
 }
 
 #play-button:hover {
     background-color: #FFA500;
+}
+
+/* Animations */
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes slideInRight {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.animate-fadeIn {
+    animation: fadeIn 2s ease-in-out;
+}
+
+.animate-slideInRight {
+    animation: slideInRight 1s ease-out;
+}
+
+.animate-spin-slow {
+    animation: spin 10s linear infinite;
 }
 
 img.h-96 {
@@ -52,4 +103,51 @@ img.h-96 {
 
 .active {
     @apply bg-blue-500 text-white;
+}
+/* CSS */
+
+/* Header Animation */
+header {
+    animation: slideDown 1s ease-in-out;
+}
+
+@keyframes slideDown {
+    0% {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Button Glow */
+#play-button {
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+}
+
+/* Main Content Fade In */
+main {
+    animation: fadeInMain 1s ease-in-out;
+}
+
+@keyframes fadeInMain {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Navigation Bar Shadow */
+header {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Hover Effect for Logo */
+header img:hover {
+    transform: rotate(360deg);
+    transition: transform 0.5s ease-in-out;
 }
