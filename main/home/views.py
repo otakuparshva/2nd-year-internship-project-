@@ -1,11 +1,18 @@
+from django.contrib.auth.views import LoginView, LogoutView
 from django.shortcuts import render
-from django.http import HttpResponse
-# Create your views here.
+
+class CustomLoginView(LoginView):
+    # Your custom implementation for login view
+    template_name = 'home/login.html'  # Example: specify a custom template for login
+
+class CustomLogoutView(LogoutView):
+    # Your custom implementation for logout view
+    template_name = 'home/home.html'  # Example: specify a custom template for logout
 
 def home(request):
-    return render(request , "home/index.html")
-   
+    # Your home view logic
+    return render(request, 'home/home.html')
 
-
-def success_page(request):
-    return HttpResponse("You are logged in successfully")
+def signup(request):
+    # Your signup view logic
+    return render(request, 'home/signup.html')
