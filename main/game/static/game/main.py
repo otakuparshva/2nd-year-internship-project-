@@ -24,7 +24,18 @@ def bg_need(bg_width):
 
 # LOADING BACKGROUND
 def get_background(name):
-    bg = pygame.image.load(join("main", "game","static","assets", "Background", name))
+    # Print the current working directory for debugging
+    print(f"Current working directory: {os.getcwd()}")
+    # Construct the path
+    path = join("..", "assets", "Background", name)
+    # Print the constructed path for debugging
+    print(f"Constructed path: {path}")
+
+    # Check if the file exists
+    if not os.path.isfile(path):
+        raise FileNotFoundError(f"No file '{path}' found in working directory '{os.getcwd()}'")
+    
+    bg = pygame.image.load(path)
     bg_width = bg.get_width()
     return bg, bg_width
 
@@ -51,7 +62,7 @@ def main(window):
         draw(window, background, BG_WIDTH, tiles, scroll)
         scroll -= 5
 
-        # RESET SCROOL 
+        # RESET SCROLL 
         if abs(scroll) >= BG_WIDTH:
             scroll = 0
 
