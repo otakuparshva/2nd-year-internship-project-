@@ -152,55 +152,53 @@ class Enemy:
 
 # Main function
 def main(window):
-    clock = pygame.time.Clock()
+    Clock = pygame.time.Clock()
     background = get_background('generalSkyBg.jpg')
     BG_WIDTH = background.get_width()
     tiles = bg_need(BG_WIDTH)
+    scroll = 0  # Define the scroll variable
+    run = True
+    player = Player(WIDTH // 2, HEIGHT - 100, 50, 50)
+    enemies = [Enemy(ENEMY_SPAWN_X, ENEMY_Y, ENEMY_WIDTH, ENEMY_HEIGHT, SMART_ENEMY_SPEED)]
 
-scroll = 0  # Define the scroll variable
+    while run:
+        Clock.tick(FPS)
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                run = False
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_SPACE:
+                    player.jump()
+                if event.key == pygame.K_LEFT:
+                    player.move_left()
+                if event.key == pygame.K_RIGHT:
+                    player.move_right()
+                if event.key == pygame.K_q:
+                    player.range_attack()
+            if event.type == pygame.KEYUP:
+                if event.key == pygame.K_LEFT and player.velocity_x < 0:
+                    player.stop_moving()
+                if event.key == pygame.K_RIGHT and player.velocity_x > 0:
+                    player.stop_moving()
 
-run = True
-player = Player(WIDTH // 2, HEIGHT - 100, 50, 50)
-enemies = [Enemy(ENEMY_SPAWN_X, ENEMY_Y, ENEMY_WIDTH, ENEMY_HEIGHT, SMART_ENEMY_SPEED)]
+        # Update player and enemies
+        player.update()
+        for enemy in enemies:
+            enemy.update(player.x)
 
-while run:
-    clock.tick(FPS)
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
+        # Adjust scroll based on player's movement
+        if player.x > WIDTH // 2:
+            scroll -= player.velocity_x
+
+        draw(window, background, BG_WIDTH, tiles, scroll, player, enemies)
+
+        # Check for player health
+        if player.health <= 0:
+            print("Game Over")
             run = False
-        if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_SPACE:
-                player.jump()
-            if event.key == pygame.K_LEFT:
-                player.move_left()
-            if event.key == pygame.K_RIGHT:
-                player.move_right()
-            if event.key == pygame.K_q:
-                player.range_attack()
-        if event.type == pygame.KEYUP:
-            if event.key == pygame.K_LEFT and player.velocity_x < 0:
-                player.stop_moving()
-            if event.key == pygame.K_RIGHT and player.velocity_x > 0:
-                player.stop_moving()
 
-    # Update player and enemies
-    player.update()
-    for enemy in enemies:
-        enemy.update(player.x)
-
-    # Adjust scroll based on player's movement
-    if player.x > WIDTH // 2:
-        scroll -= player.velocity_x
-
-    draw(window, background, BG_WIDTH, tiles, scroll, player, enemies)
-
-    # Check for player health
-    if player.health <= 0:
-        print("Game Over")
-        run = False
-
-pygame.quit()
-quit()
+    pygame.quit()
+    quit()
 
 if __name__ == "__main__":
     main(window)
