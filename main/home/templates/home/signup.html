@@ -3,15 +3,68 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up</title>
+    <title>Sign Up - One Piece</title>
+    <style>
+        /* CSS styles */
+        body {
+            background-color: #39474f;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+        h1 {
+            color: #e57373;
+        }
+        input {
+            padding: 10px;
+            margin: 10px;
+            border-radius: 5px;
+            border: none;
+            width: 300px;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 10px;
+            border-radius: 5px;
+            border: none;
+            background-color: #64b5f6;
+            color: #fff;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #2196f3;
+        }
+    </style>
 </head>
 <body>
-    <h2>Sign Up</h2>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Sign Up</button>
-    </form>
-    <a href="{% url 'social:begin' 'google-oauth2' %}"><button>Sign Up with Google</button></a>
+    <div class="container">
+        <h1>Join the Adventure!</h1>
+        <form id="signupForm" method="post">
+            {% csrf_token %}
+            <input type="text" name="username" placeholder="Username" required><br>
+            <input type="password" name="password" placeholder="Password" required><br>
+            <button type="submit">Sign Up</button>
+        </form>
+    </div>
+
+    <script>
+        // JavaScript
+        document.getElementById("signupForm").addEventListener("submit", function(event) {
+            // Validate form fields or submit via AJAX if needed
+            // For now, let's prevent the default form submission
+            event.preventDefault();
+            alert("Sign up form submitted!");
+        });
+    </script>
 </body>
 </html>

@@ -1,18 +1,23 @@
-from django.contrib.auth.views import LoginView, LogoutView
+# views.py (main)
 from django.shortcuts import render
+from django.contrib.auth.views import LoginView, LogoutView
+from .forms import SignUpForm
 
 class CustomLoginView(LoginView):
-    # Your custom implementation for login view
-    template_name = 'home/login.html'  # Example: specify a custom template for login
+    template_name = 'home/login.html'  # Adjust the template path if needed
 
 class CustomLogoutView(LogoutView):
-    # Your custom implementation for logout view
-    template_name = 'home/home.html'  # Example: specify a custom template for logout
+    pass
 
 def home(request):
-    # Your home view logic
     return render(request, 'home/home.html')
 
 def signup(request):
-    # Your signup view logic
-    return render(request, 'home/signup.html')
+    if request.method == 'POST':
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            # Process form data
+            pass
+    else:
+        form = SignUpForm()
+    return render(request, 'home/signup.html', {'form': form})
