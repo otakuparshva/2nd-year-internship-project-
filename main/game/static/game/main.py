@@ -9,7 +9,7 @@ pygame.display.set_caption("One Piece: The Unreal Adventure")
 
 # Global variables
 BG_COLOR = (255, 255, 255)
-WIDTH, HEIGHT = 1500, 800
+WIDTH, HEIGHT = 1280 , 720
 FPS = 60
 PLAYER_VEL = 5
 PLAYER_HEALTH = 100
